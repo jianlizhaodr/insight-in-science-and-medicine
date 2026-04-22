@@ -15,40 +15,43 @@ layout: default
     <h1 class="article__title">{{ page.title }}</h1>
 
     {% if page.authors %}
-      <p class="article__authors">
-        {% if page.authors.first.name %}
-          {% for a in page.authors %}
-            <span class="author">
-              {{ a.name }}{% if a.affiliations %}<sup>{{ a.affiliations | join: "," }}</sup>{% endif %}{% if a.corresponding %} <span class="author__corr" title="Corresponding author">✉</span>{% endif %}
-            </span>{% unless forloop.last %}, {% endunless %}
-          {% endfor %}
-        {% else %}
-          {{ page.authors }}
-        {% endif %}
-      </p>
+      <p class="article__authors">{{ page.authors }}</p>
     {% endif %}
 
     {% if page.affiliations %}
       <details class="article__affil">
         <summary>Affiliations &amp; Notes</summary>
         <ol>
-          {% for aff in page.affiliations %}
-            <li>{{ aff }}</li>
-          {% endfor %}
+          {% for aff in page.affiliations %}<li>{{ aff }}</li>{% endfor %}
         </ol>
       </details>
     {% endif %}
 
+    {% if page.keywords %}
+      <ul class="article__keywords">
+        {% for kw in page.keywords %}
+          <li>{{ kw }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
     <div class="article__actions">
-      {% if page.pdf %}
-        <a class="action" href="{{ page.pdf | relative_url }}" download>⬇ Download PDF</a>
-      {% else %}
-        <span class="action action--disabled" title="PDF not available">⬇ Download PDF</span>
+      {% if page.zenodo_url %}
+        <a class="btn btn--primary" href="{{ page.zenodo_url }}" target="_blank" rel="noopener">
+          Read full paper on Zenodo ↗
+        </a>
+      {% elsif page.pdf %}
+        <a class="btn btn--primary" href="{{ page.pdf | relative_url }}" download>⬇ Download PDF</a>
       {% endif %}
-      <a class="action" href="#references">&quot; Cite</a>
+      <a class="action" href="#cite">&quot; Cite</a>
       <a class="action" href="#" onclick="navigator.clipboard.writeText(window.location.href); return false;">⇪ Share</a>
-      <a class="action" href="{{ '/about.html' | relative_url }}">⊙ Get Rights</a>
-      <span class="action__meta">DOI: <a href="https://doi.org/{{ page.doi }}">{{ page.doi }}</a></span>
+      <span class="action__meta">
+        {% if page.zenodo_doi %}
+          DOI: <a href="https://doi.org/{{ page.zenodo_doi }}" target="_blank" rel="noopener">{{ page.zenodo_doi }}</a>
+        {% else %}
+          DOI: <a href="https://doi.org/{{ page.doi }}">{{ page.doi }}</a>
+        {% endif %}
+      </span>
     </div>
   </header>
 
@@ -56,56 +59,65 @@ layout: default
 
     <main class="article__main">
 
+      {% if page.abstract %}
+        <section class="article__summary" id="summary">
+          <h2>Abstract</h2>
+          <p>{{ page.abstract }}</p>
+        </section>
+      {% endif %}
+
       {% if page.highlights %}
         <section class="article__highlights" id="highlights">
           <h2>Highlights</h2>
           <ul>
-            {% for h in page.highlights %}
-              <li>{{ h | markdownify | remove: "<p>" | remove: "</p>" }}</li>
-            {% endfor %}
+            {% for h in page.highlights %}<li>{{ h }}</li>{% endfor %}
           </ul>
         </section>
       {% endif %}
 
-      {% if page.summary %}
-        <section class="article__summary" id="summary">
-          <h2>Summary</h2>
-          <p>{{ page.summary }}</p>
+      {% if content and content != '' %}
+        <section class="article__body">
+          {{ content }}
         </section>
       {% endif %}
 
-      <section class="article__body">
-        {{ content }}
+      <section class="article__cite" id="cite">
+        <h2>Cite this article</h2>
+        {% assign cite_doi = page.zenodo_doi | default: page.doi %}
+        {% assign cite_authors = page.authors | default: "Author Unknown" %}
+        {% assign cite_year = page.date | date: "%Y" %}
+        <pre class="citation">{{ cite_authors }} ({{ cite_year }}). {{ page.title }}. <em>Insight in Science and Medicine</em>. https://doi.org/{{ cite_doi }}</pre>
+        <button class="btn btn--outline" onclick="navigator.clipboard.writeText(this.previousElementSibling.innerText); this.innerText='Copied ✓'; setTimeout(()=>this.innerText='Copy citation', 1500);">Copy citation</button>
       </section>
 
     </main>
 
     <aside class="article__sidebar">
-      {% if page.figures %}
-        <section class="figures" id="figures">
-          <h3>Figures ({{ page.figures.size }})</h3>
-          <ol class="figures__list">
-            {% for fig in page.figures %}
-              <li>
-                <a href="{{ fig.src | relative_url }}">
-                  <img src="{{ fig.src | relative_url }}" alt="{{ fig.caption | default: 'Figure' }}">
-                </a>
-                {% if fig.caption %}<span class="figures__caption">{{ fig.caption }}</span>{% endif %}
-              </li>
-            {% endfor %}
-          </ol>
-        </section>
-      {% endif %}
+
+      <section class="metric-box">
+        <h3>Citations</h3>
+        <div class="metric-big">
+          {% if page.citations %}{{ page.citations }}{% else %}0{% endif %}
+        </div>
+        <p class="metric-src">
+          {% if page.citations_source %}
+            source: {{ page.citations_source }}
+          {% else %}
+            source: OpenCitations
+          {% endif %}
+        </p>
+      </section>
 
       <nav class="article__outline">
         <h3>Outline</h3>
         <ul>
+          {% if page.abstract %}<li><a href="#summary">Abstract</a></li>{% endif %}
           {% if page.highlights %}<li><a href="#highlights">Highlights</a></li>{% endif %}
-          {% if page.summary %}<li><a href="#summary">Summary</a></li>{% endif %}
-          <li><a href="#body">Article</a></li>
-          <li><a href="#references">References</a></li>
+          <li><a href="#cite">Cite</a></li>
+          {% if page.zenodo_url %}<li><a href="{{ page.zenodo_url }}" target="_blank" rel="noopener">Full text ↗</a></li>{% endif %}
         </ul>
       </nav>
+
     </aside>
 
   </div>

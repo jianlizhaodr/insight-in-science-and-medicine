@@ -5,10 +5,20 @@
       <span class="tag tag--oa">{{ include.entry.access | default: "Open Access" }}</span>
     </div>
     <h3 class="article-card__title">{{ include.entry.title }}</h3>
-    {% if include.entry.authors %}
-      <p class="article-card__authors">{{ include.entry.authors }}</p>
+    {% if include.entry.authors_display or include.entry.authors %}
+      <p class="article-card__authors">{{ include.entry.authors_display | default: include.entry.authors }}</p>
     {% endif %}
-    <p class="article-card__date">Published online: {{ include.entry.date | date: "%B %-d, %Y" }}</p>
+    {% if include.entry.keywords %}
+      <ul class="article-card__keywords">
+        {% for kw in include.entry.keywords limit: 3 %}<li>{{ kw }}</li>{% endfor %}
+      </ul>
+    {% endif %}
+    <div class="article-card__footer">
+      <span class="article-card__date">{{ include.entry.date | date: "%B %-d, %Y" }}</span>
+      {% if include.entry.citations %}
+        <span class="article-card__cites">{{ include.entry.citations }} cite{% if include.entry.citations != 1 %}s{% endif %}</span>
+      {% endif %}
+    </div>
   </div>
   {% if include.entry.image %}
     <div class="article-card__thumb">
