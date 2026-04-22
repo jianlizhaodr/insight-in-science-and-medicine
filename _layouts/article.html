@@ -40,7 +40,11 @@ layout: default
     {% endif %}
 
     <div class="article__actions">
-      <a class="action" href="#summary">⬇ Download PDF</a>
+      {% if page.pdf %}
+        <a class="action" href="{{ page.pdf | relative_url }}" download>⬇ Download PDF</a>
+      {% else %}
+        <span class="action action--disabled" title="PDF not available">⬇ Download PDF</span>
+      {% endif %}
       <a class="action" href="#references">&quot; Cite</a>
       <a class="action" href="#" onclick="navigator.clipboard.writeText(window.location.href); return false;">⇪ Share</a>
       <a class="action" href="{{ '/about.html' | relative_url }}">⊙ Get Rights</a>
