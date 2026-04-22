@@ -2,10 +2,11 @@ title: Insight in Science and Medicine
 description: >-
   A topic-focused journal of notes, ideas, and commentary on science and
   medicine, with linked references to primary literature.
-author: Your Name
-email: you@example.com
-baseurl: ""
-url: ""
+author: Genomics.X
+email: 228049428+jianlizhaodr@users.noreply.github.com
+baseurl: "/insight-in-science-and-medicine"
+url: "https://jianlizhaodr.github.io"
+github_username: jianlizhaodr
 
 theme: minima
 markdown: kramdown

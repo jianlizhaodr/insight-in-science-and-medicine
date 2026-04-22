@@ -8,4 +8,4 @@ permalink: /about.html
 commentary on science and medicine. Each entry links to the primary
 literature; references are managed with BibTeX in `_bibliography/references.bib`.
 
-Source repository: <https://github.com/your-username/insight-in-science-and-medicine>
+Source repository: <https://github.com/jianlizhaodr/insight-in-science-and-medicine>
