@@ -9,6 +9,14 @@ emphasizing reliability and data reusability.
 <em>"This journal is published under CC BY 4.0. ISSN: 3069-8898"</em>
 </p>
 
+## Publication Information
+
+<ul class="journal-meta">
+  <li><strong>Publisher:</strong> Insight in Science and Medicine Publishing Group</li>
+  <li><strong>ISSN:</strong> 3069-8898 (U.S. ISSN Center) (Online)</li>
+  <li><strong>DOI prefix:</strong> 10.65587</li>
+</ul>
+
 ## Topics
 
 - [Biotech](/biotech.html)
