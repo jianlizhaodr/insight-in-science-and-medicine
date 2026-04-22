@@ -21,6 +21,7 @@ Create a file like `_biotech/2026-04-22-my-entry.md`:
 ---
 title: "My entry title"
 date: 2026-04-22
+doi: 10.65587/isam.2026.002
 ---
 
 Body text. Cite a paper with {% raw %}{% cite key2024 %}{% endraw %}.
@@ -29,6 +30,15 @@ Body text. Cite a paper with {% raw %}{% cite key2024 %}{% endraw %}.
 
 {% raw %}{% bibliography --cited %}{% endraw %}
 ```
+
+**DOI scheme**: `10.65587/isam.YYYY.NNN`
+- `10.65587` — the journal's DOI prefix
+- `isam` — journal namespace (Insight in Science and Medicine)
+- `YYYY` — year of publication
+- `NNN` — zero-padded sequential number within that year
+
+Each entry MUST have a unique `doi` in its front matter — the URL is built from it.
+URL pattern: `/biotech/<doi>/` → e.g. `/biotech/10.65587/isam.2026.001/`
 
 Add the corresponding entry to `_bibliography/references.bib`.
 

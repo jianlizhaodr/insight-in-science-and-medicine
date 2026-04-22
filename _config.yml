@@ -23,7 +23,7 @@ plugins:
 collections:
   biotech:
     output: true
-    permalink: /biotech/:path/
+    permalink: /biotech/:doi/
 
 defaults:
   - scope:
