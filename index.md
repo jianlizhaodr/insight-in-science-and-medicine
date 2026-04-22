@@ -3,8 +3,11 @@ layout: home
 title: Insight in Science and Medicine
 ---
 
-A topic-focused journal of notes and commentary, with links to the primary
-literature.
+<p class="journal-tagline">
+A peer-reviewed journal of translational research and clinical science
+emphasizing reliability and data reusability.
+<em>"This journal is published under CC BY 4.0. ISSN: 3069-8898"</em>
+</p>
 
 ## Topics
 
