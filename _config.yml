@@ -1,0 +1,47 @@
+title: Insight in Science and Medicine
+description: >-
+  A topic-focused journal of notes, ideas, and commentary on science and
+  medicine, with linked references to primary literature.
+author: Your Name
+email: you@example.com
+baseurl: ""
+url: ""
+
+theme: minima
+markdown: kramdown
+highlighter: rouge
+permalink: /:collection/:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-scholar
+
+collections:
+  biotech:
+    output: true
+    permalink: /biotech/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: biotech
+    values:
+      layout: post
+      topic: biotech
+
+scholar:
+  source: ./_bibliography
+  bibliography: references.bib
+  bibliography_template: bib
+  style: apa
+  sort_by: year
+  order: descending
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
+  - .github
