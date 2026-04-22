@@ -1,0 +1,18 @@
+<a class="article-card" href="{{ include.entry.url | relative_url }}">
+  <div class="article-card__body">
+    <div class="article-card__meta">
+      <span class="tag tag--type">{{ include.entry.type | default: "Article" }}</span>
+      <span class="tag tag--oa">{{ include.entry.access | default: "Open Access" }}</span>
+    </div>
+    <h3 class="article-card__title">{{ include.entry.title }}</h3>
+    {% if include.entry.authors %}
+      <p class="article-card__authors">{{ include.entry.authors }}</p>
+    {% endif %}
+    <p class="article-card__date">Published online: {{ include.entry.date | date: "%B %-d, %Y" }}</p>
+  </div>
+  {% if include.entry.image %}
+    <div class="article-card__thumb">
+      <img src="{{ include.entry.image | relative_url }}" alt="{{ include.entry.title }}">
+    </div>
+  {% endif %}
+</a>

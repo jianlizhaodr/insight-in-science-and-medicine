@@ -9,6 +9,86 @@ emphasizing reliability and data reusability.
 <em>"This journal is published under CC BY 4.0. ISSN: 3069-8898"</em>
 </p>
 
+<!-- =============================================================
+     HERO: Cover + Issue info | Action buttons | Journal metrics
+     ============================================================= -->
+<section class="hero">
+
+  <div class="hero__issue">
+    <div class="hero__cover">
+      <div class="hero__cover-placeholder">
+        <span>Insight in<br>Science and<br>Medicine</span>
+      </div>
+    </div>
+    <div class="hero__issue-info">
+      <h3>Current Issue</h3>
+      <p class="hero__volume">Volume 1, Issue 1, April 22, 2026</p>
+      <a class="btn btn--primary" href="{{ '/biotech.html' | relative_url }}">
+        ⬇ Download full issue
+      </a>
+      <ul class="hero__issue-links">
+        <li><a href="{{ '/biotech.html' | relative_url }}">Online now</a></li>
+        <li><a href="{{ '/biotech.html' | relative_url }}">Archive</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="hero__actions">
+    <a class="btn btn--outline" href="{{ '/about.html' | relative_url }}">Submit article ↗</a>
+    <a class="btn btn--outline" href="{{ '/about.html' | relative_url }}">View aims &amp; scope</a>
+    <a class="btn btn--outline" href="{{ '/about.html' | relative_url }}">Information for authors</a>
+    <a class="btn btn--outline" href="{{ '/about.html' | relative_url }}">Sign up for alerts</a>
+  </div>
+
+  <div class="hero__metrics">
+    <h4>Journal metrics</h4>
+    <div class="metrics-grid">
+      <div class="metric">
+        <div class="metric__value">—</div>
+        <div class="metric__label">Time to first<br>editorial decision</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">—</div>
+        <div class="metric__label">Acceptance to<br>online publication</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- =============================================================
+     FEATURED CONTENT
+     ============================================================= -->
+<section class="content-section content-section--featured">
+  <h2>Featured content</h2>
+  <div class="article-grid">
+    {% assign featured = site.biotech | where: "featured", true | sort: "date" | reverse %}
+    {% if featured.size > 0 %}
+      {% for entry in featured limit: 4 %}
+        {% include article-card.html entry=entry %}
+      {% endfor %}
+    {% else %}
+      {% assign recent = site.biotech | sort: "date" | reverse %}
+      {% for entry in recent limit: 4 %}
+        {% include article-card.html entry=entry %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+
+<!-- =============================================================
+     ONLINE NOW (most recent)
+     ============================================================= -->
+<section class="content-section">
+  <h2>Online now</h2>
+  <div class="article-grid">
+    {% assign recent = site.biotech | sort: "date" | reverse %}
+    {% for entry in recent limit: 4 %}
+      {% include article-card.html entry=entry %}
+    {% endfor %}
+  </div>
+</section>
+
 ## Publication Information
 
 <ul class="journal-meta">
@@ -16,43 +96,3 @@ emphasizing reliability and data reusability.
   <li><strong>ISSN:</strong> 3069-8898 (U.S. ISSN Center) (Online)</li>
   <li><strong>DOI prefix:</strong> 10.65587</li>
 </ul>
-
-## Topics
-
-- [Biotech](/biotech.html)
-
-## Most recent
-
-<div class="recent-grid">
-
-  <div class="card card--issue">
-    <div class="card__cover">
-      <div class="card__cover-placeholder">
-        <span class="cover-title">Current Issue</span>
-        <span class="cover-subtitle">Insight in Science and Medicine</span>
-      </div>
-    </div>
-    <ul class="card__links">
-      <li><a href="{{ '/' | relative_url }}">Journal Home</a></li>
-      <li><a href="{{ '/biotech.html' | relative_url }}">Table of Contents</a></li>
-      <li><a href="{{ '/biotech.html' | relative_url }}">Online Now</a></li>
-      <li><a href="{{ '/about.html' | relative_url }}">About</a></li>
-    </ul>
-  </div>
-
-  {% assign all_entries = site.biotech | sort: "date" | reverse %}
-  {% for entry in all_entries limit: 6 %}
-    <a class="card card--entry" href="{{ entry.url | relative_url }}">
-      <div class="card__body">
-        <h3 class="card__title">{{ entry.title }}</h3>
-        <p class="card__category"><em>{{ entry.category | default: "Insight in Science and Medicine" }}</em></p>
-      </div>
-      {% if entry.image %}
-        <div class="card__thumb">
-          <img src="{{ entry.image | relative_url }}" alt="{{ entry.title }}">
-        </div>
-      {% endif %}
-    </a>
-  {% endfor %}
-
-</div>
