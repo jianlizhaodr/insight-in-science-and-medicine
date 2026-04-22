@@ -39,6 +39,46 @@ $isam-darkblue: #0b2c5a;
   }
 }
 
+// ========== Subject areas ==========
+
+.subject-areas {
+  margin: 2em 0;
+
+  h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #111;
+    margin: 0 0 0.8em 0;
+  }
+}
+
+.subject-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+
+  li { margin: 0; }
+
+  a {
+    display: inline-block;
+    color: $isam-darkblue;
+    font-weight: 600;
+    font-size: 1em;
+    text-decoration: none;
+    padding: 6px 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.15s;
+
+    &:hover {
+      border-bottom-color: $isam-darkblue;
+      text-decoration: none;
+    }
+  }
+}
+
 // ========== HERO: cover + actions + metrics ==========
 
 .hero {

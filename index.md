@@ -57,6 +57,18 @@ emphasizing reliability and data reusability.
 </section>
 
 <!-- =============================================================
+     SUBJECT AREAS
+     ============================================================= -->
+<section class="subject-areas">
+  <h2>Subject areas</h2>
+  <ul class="subject-list">
+    <li><a href="{{ '/biochemical-sciences.html' | relative_url }}">Biochemical Sciences</a></li>
+    <li><a href="{{ '/biotechnology.html' | relative_url }}">Biotechnology</a></li>
+    <li><a href="{{ '/molecular-medicine.html' | relative_url }}">Molecular Medicine</a></li>
+  </ul>
+</section>
+
+<!-- =============================================================
      FEATURED CONTENT
      ============================================================= -->
 <section class="content-section content-section--featured">
