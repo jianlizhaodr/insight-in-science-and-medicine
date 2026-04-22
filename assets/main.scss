@@ -3,8 +3,16 @@
 
 @import "minima";
 
+$isam-darkblue: #0b2c5a;
+
+.site-title,
+.site-title:visited {
+  color: $isam-darkblue !important;
+  font-weight: 700;
+}
+
 .site-description,
 .site-footer .site-description {
-  color: #0b2c5a; // dark blue
+  color: $isam-darkblue;
   font-weight: 500;
 }
