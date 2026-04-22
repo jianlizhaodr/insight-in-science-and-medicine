@@ -5,8 +5,8 @@ description: >-
   under CC BY 4.0. ISSN: 3069-8898
 author: Genomics.X
 email: 228049428+jianlizhaodr@users.noreply.github.com
-baseurl: "/insight-in-science-and-medicine"
-url: "https://jianlizhaodr.github.io"
+baseurl: ""
+url: "https://sci-medicine.org"
 github_username: jianlizhaodr
 
 theme: minima

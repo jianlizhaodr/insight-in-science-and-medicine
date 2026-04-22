@@ -8,4 +8,5 @@ permalink: /about.html
 commentary on science and medicine. Each entry links to the primary
 literature; references are managed with BibTeX in `_bibliography/references.bib`.
 
+Website: <https://sci-medicine.org>
 Source repository: <https://github.com/jianlizhaodr/insight-in-science-and-medicine>
