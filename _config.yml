@@ -8,6 +8,7 @@ email: 228049428+jianlizhaodr@users.noreply.github.com
 baseurl: ""
 url: "https://sci-medicine.org"
 github_username: jianlizhaodr
+logo: /assets/images/isam-logo.png
 
 theme: minima
 markdown: kramdown

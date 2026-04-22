@@ -9,6 +9,13 @@ $isam-darkblue: #0b2c5a;
 .site-title:visited {
   color: $isam-darkblue !important;
   font-weight: 700;
+
+  img {
+    height: 44px;
+    width: auto;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
 }
 
 .site-description,
